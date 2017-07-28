@@ -5,35 +5,36 @@ import {
     Link
 } from 'react-router-dom'
 
-import Books from "./Books";
+import AllBooks from './AllBooks.js'
 
-const Search = () => (
-    <div>
-        <h2>Search</h2>
-    </div>
-)
+import Search from "./Search";
+import User from "./User";
 
-const Users = () => (
-    <div>
-        <h2>Users</h2>
-    </div>
-)
 
-const Routers = () => (
-    <Router>
-        <div>
-            <ul>
-                <li><Link to="/">Search</Link></li>
-                <li><Link to="/books">Books</Link></li>
-                <li><Link to="/user">User</Link></li>
-            </ul>
+class Routers extends React.Component {
+    constructor(){
+        super()
+    }
+    render() {
+        return (
+            <Router>
+                <div>
+                    <div className="menu">
+                        <ul className="nav_main">
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/allBooks">All books</Link></li>
+                            <li><Link to="/user">User</Link></li>
+                        </ul>
+                    </div>
 
-            <hr/>
+                    <hr/>
 
-            <Route exact path="/" component={Search}/>
-            <Route path="/books" component={Books}/>
-            <Route path="/user" component={Users}/>
-        </div>
-    </Router>
-)
+                    <Route exact path="/" component={Search}/>
+                    <Route path="/allbooks" component={AllBooks}/>
+                    <Route path="/user" component={User}/>
+                </div>
+            </Router>
+        )
+    }
+}
 export default Routers
