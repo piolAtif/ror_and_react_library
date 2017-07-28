@@ -1,17 +1,15 @@
-const LOCALAPI = 'http://localhost:8080';
-const ACTUALAPI = 'http://10.0.1.29:3000/books';
-
 class httpService{
-    constructor(){
-        let _books = [];
+    constructor(url){
+        this.url = url;
     }
 
     getBooks(callback){
-        fetch(`${ACTUALAPI}`)
+        let url = this.url;
+        fetch(`${url}`)
             .then(response=>{
                 return response.json()
             }).then((data) => {
-            callback(data);
+            callback(data.data);
         });
     }
 }
