@@ -1,0 +1,97 @@
+.book{
+	border: 1px solid lightgray;
+	width: 50%;
+	height: 200px;
+	margin: 4px;
+	display: -webkit-box;
+}
+
+.book_name{
+	font-weight: 700;
+	font-size: 24px;
+}
+
+img{
+	width: 100%;
+	height: 100%
+}
+
+.author{
+	font-size:20px;
+	font-style: italic;
+}
+.image{
+	width: 20%;
+	height: 80%;
+	border: 1px solid lightgray;
+	margin-left: 10%;
+	margin-top: 3%;
+}
+
+.books{
+	width: 100%;
+	margin-left: 10%
+}
+
+.root{
+	width: 100%;
+}
+
+.container{
+	margin-left: 10%;
+	margin-top: 3%;
+	width: 70%;
+}
+
+.book_detail{
+	margin: 5% 0% 0% 0%;
+	width: 100%;
+}
+
+.book_actions{
+	margin: 5% 0% 0% 0%;
+	width:100%;
+}
+
+button{
+	font-size: 17px;
+	border-radius: 7px;
+	border-color: darkgray;
+	background-color: #454649;
+	color: white;
+	margin-right: 4%;
+}
+
+button:disabled{
+	cursor: not-allowed;
+	opacity: 0.65;
+}
+
+.nav_main{
+	display: inline-flex;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+	background-color: #f1f1f1;
+}
+
+.nav_main li{
+	padding:0 10px;
+}
+.nav_main li>a{
+	display: block;
+	width: 60px;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #555;
+	color: white;
+}
+
+.active {
+	background-color: #4CAF50;
+	color: white;
+}
