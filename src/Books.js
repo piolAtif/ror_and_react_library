@@ -1,6 +1,4 @@
 import React from 'react';
-import httpService from "./service/httpService";
-const ACTUALAPI = 'http://10.0.1.29:3000/books';
 
 class Book extends React.Component{
 	constructor(){
@@ -42,24 +40,8 @@ class Books extends React.Component{
 		this.state = {books: []};
 	}
 
-	fetchBooks(listOfBooks){
-		this.setState({books:listOfBooks});
-	}
-
-	componentWillMount(){
-		new httpService().getBooks(this.fetchBooks);
-		console.log('books are', this.books);
-
-        // fetch(`${ACTUALAPI}`)
-        //     .then(response=>{
-        //         return response.json()
-        //     }).then((data) => {
-        //     this.setState({books:data.data})
-        // });
-	}
-
 	render(){
-		let booksList = this.state.books;
+		let booksList = this.props.books;
 		let myBooks = booksList.map((book,i) => {
 			return <Book key={i} value={book}/>
 		});
