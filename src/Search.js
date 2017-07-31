@@ -34,8 +34,12 @@ class Search extends React.Component{
         return (
             <div>
                 <form onSubmit={this.handleClick}>
-                    <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search book or author"/>
-                    <input type="submit" value="Submit"/>
+                    <input type="text"
+                           value={this.state.value}
+                           onChange={this.handleChange}
+                           placeholder="Search book or author"
+                           className="search_box"/>
+                    <input type="submit" value="Submit" className="search_button"/>
                 </form>
                 <Books books={this.state.books}/>
                 <div className="message">{this.state.message}</div>
