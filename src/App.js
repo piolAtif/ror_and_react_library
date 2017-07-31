@@ -25,7 +25,7 @@ class Tab extends React.Component{
     render(){
         return (
             <li>
-                <NavLink to={this.props.url} id={this.key} onClick={this.handleClick.bind(this)}
+                <NavLink to={this.props.url} id={this.props.currentTab} onClick={this.handleClick.bind(this)}
                          className={this.props.isCurrent ? 'current': null}>
                     {this.props.name}
                     </NavLink>
@@ -44,11 +44,11 @@ class Tabs extends React.Component{
                 {this.props.tabsList.map(function(tab){
                     return (
                         <Tab key={tab.id}
-                             currentTab={this.props.currentTab}
+                             currentTab= {tab.id}
                              handleClick={this.handleClick.bind(this,tab)}
                              url={tab.url}
                              name={tab.name}
-                             isCurrent={(this.props.currentTab === tab.id)}
+                             isCurrent={(this.props.currentTab+"" === tab.id+"")}
                         />
                     )
                 }.bind(this))}
@@ -62,11 +62,12 @@ class Routers extends React.Component{
     constructor(){
         super();
         this.state = {tabs: tabsList,
-            currentTab: 1}
+            currentTab:  localStorage.getItem('CurrentTab')|| 1};
         this.changeTab = this.changeTab.bind(this);
     }
 
     changeTab(tab){
+        localStorage.setItem('CurrentTab', tab.id);
         this.setState({tabs:this.state.tabs, currentTab:tab.id});
     }
     render() {
