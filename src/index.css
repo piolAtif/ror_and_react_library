@@ -95,12 +95,12 @@ button:disabled{
 	text-decoration: none;
 }
 
-li a.active{
+li a.current{
 	background-color:#555;
 	color:white;
 }
 
-li a:hover:not(.active) {
+li a:hover:not(.current) {
 	background-color: darkgray;
 	color: white;
 }

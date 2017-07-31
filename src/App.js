@@ -2,8 +2,9 @@ import React from 'react'
 import {
     BrowserRouter as Router,
     Route,
-    Link
+    NavLink,
 } from 'react-router-dom'
+
 
 import AllBooks from './AllBooks.js'
 
@@ -11,45 +12,74 @@ import Search from "./Search";
 import User from "./User";
 
 
-class Routers extends React.Component {
+let tabsList = [{id:1,name:'Home', url:'/'},
+    {id:2,name:'All Books', url:'/allbooks'},
+    {id:3,name:'User', url:'/user'}];
+
+
+class Tab extends React.Component{
+    handleClick(event){
+        this.props.handleClick(event.target);
+    }
+
+    render(){
+        return (
+            <li>
+                <NavLink to={this.props.url} id={this.key} onClick={this.handleClick.bind(this)}
+                         className={this.props.isCurrent ? 'current': null}>
+                    {this.props.name}
+                    </NavLink>
+            </li>
+        )
+    }
+}
+
+class Tabs extends React.Component{
+    handleClick(tab){
+        this.props.changeTab(tab);
+    }
+    render(){
+        return (
+            <ul className="nav_main">
+                {this.props.tabsList.map(function(tab){
+                    return (
+                        <Tab key={tab.id}
+                             currentTab={this.props.currentTab}
+                             handleClick={this.handleClick.bind(this,tab)}
+                             url={tab.url}
+                             name={tab.name}
+                             isCurrent={(this.props.currentTab === tab.id)}
+                        />
+                    )
+                }.bind(this))}
+            </ul>
+        )
+    }
+
+}
+
+class Routers extends React.Component{
     constructor(){
         super();
-        this.state = {selectedItem:'home'};
+        this.state = {tabs: tabsList,
+            currentTab: 1}
+        this.changeTab = this.changeTab.bind(this);
     }
 
-    onItemClick(event){
-        this.setState({selectedItem:event.target.id})
+    changeTab(tab){
+        this.setState({tabs:this.state.tabs, currentTab:tab.id});
     }
-
-    componentWillMount(){
-
-    }
-
-
     render() {
         return (
             <Router>
                 <div>
                     <div className="menu">
-                        <ul className="nav_main">
-
-                            <li><Link to="/" id="home"
-                                      className={this.state.selectedItem === 'home' ? "active": "inactive"}
-                                      onClick={this.onItemClick.bind(this)}>Home</Link>
-                            </li>
-                            <li><Link to="/allBooks" id="all_books"
-                                      className={this.state.selectedItem === 'all_books' ? "active": "inactive"}
-                                      onClick={this.onItemClick.bind(this)}>All Books</Link>
-                            </li>
-                            <li><Link to="/user" id="user"
-                                      className={this.state.selectedItem === 'user' ? "active": "inactive"}
-                                      onClick={this.onItemClick.bind(this)}>User</Link>
-                            </li>
-                        </ul>
+                        <Tabs
+                            currentTab={this.state.currentTab}
+                            changeTab={this.changeTab}
+                            tabsList={this.state.tabs}/>
                     </div>
-
                     <hr/>
-
                     <Route exact path="/" component={Search}/>
                     <Route path="/allbooks" component={AllBooks}/>
                     <Route path="/user" component={User}/>
@@ -58,4 +88,5 @@ class Routers extends React.Component {
         )
     }
 }
-export default Routers
+
+export default Routers;
