@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # library_react_and_ror
 A library created using reactjs and ruby-and-rails. It is a library web application. where a user can borrow or return a book. 
 
@@ -46,10 +46,5 @@ Things you may want to cover:
 
 * ...
 
-=======
-# ror_and_react_library
-It is a library build by ruby and rails and reactjs.
-
-
 https://docs.google.com/a/coffeebeans.io/document/d/1I2wNTmFlynml1e2UfOm2mwax0SKMIzwYA5qc3CAd8Jc/edit?usp=sharing
->>>>>>> c94a6981a6110ff746be711584f7d4e5aa6c6f3f
+
