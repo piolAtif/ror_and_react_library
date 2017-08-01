@@ -2,7 +2,7 @@ import React from 'react'
 import {
     BrowserRouter as Router,
     Route,
-    NavLink,
+    Link,
 } from 'react-router-dom'
 
 
@@ -25,10 +25,10 @@ class Tab extends React.Component{
     render(){
         return (
             <li>
-                <NavLink to={this.props.url} id={this.props.currentTab} onClick={this.handleClick.bind(this)}
+                <Link to={this.props.url} id={this.props.currentTab} onClick={this.handleClick.bind(this)}
                          className={this.props.isCurrent ? 'current': null}>
                     {this.props.name}
-                    </NavLink>
+                    </Link>
             </li>
         )
     }
