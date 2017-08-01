@@ -1,23 +1,35 @@
 import React from 'react';
+import httpService from './service/httpService';
+const BORROW_API = "http://10.0.1.29:3000/user/1/book/";
+const RETURN_API = "http://10.0.1.29:3000/user/1/book/";
 
 class Book extends React.Component{
-	constructor(){
-		super();
-		this.state = {returnButton:true,borrowButton:false};
+	constructor(props){
+		super(props);
+		this.state = {
+			id:props.value.id,
+			status: props.value.can_borrowed+"" === '1'? 'borrow':'return'
+		};
+		this.updateBook = this.updateBook.bind(this);
 	}
+
+	updateBook(data){
+		this.setState({id:this.state.id,
+            status:data.can_borrowed+"" === '1'? 'borrow':'return'
+		})
+	}
+
 	borrowABook(){
-		this.setState({returnButton:false, borrowButton:true});
-		return alert('Book has borrowed');
+        new httpService(BORROW_API+this.state.id+"/borrow").getBooks(this.updateBook);
 	}
 
 	returnABook(){
-        this.setState({returnButton:true, borrowButton:false});
-		return alert('Book has return successfully');
+        new httpService(RETURN_API+this.state.id+"/return").getBooks(this.updateBook);
 	}
 
 	render(){
 		return (
-			<div className="book" id={this.props.value.id}>
+			<div className="book" id={this.state.id}>
 				<div className="image"><img alt="" src={this.props.value.image_link}/></div>
 				<div className="container">
 					<div className="book_detail">
@@ -25,8 +37,8 @@ class Book extends React.Component{
 						<div className="author">{this.props.value.author_name}</div>
 					</div>
 					<div className="book_actions">
-						<button name="borrow_button" onClick={()=>this.borrowABook()} disabled={this.state.borrowButton}>Borrow</button>
-						<button name="return_button" onClick={()=>this.returnABook()} disabled={this.state.returnButton}>Return</button>
+						<button name="borrow_button" onClick={()=>this.borrowABook()} disabled={this.state.status === 'return'}>Borrow</button>
+						<button name="return_button" onClick={()=>this.returnABook()} disabled={this.state.status === 'borrow'}>Return</button>
 					</div>
 				</div>
 			</div>
