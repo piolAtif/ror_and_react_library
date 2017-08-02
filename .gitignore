@@ -28,6 +28,14 @@ package-lock.json
 
 # Ignore bundler config.
 /.bundle
+/.bin
+/.lib
+/.log
+/.tmp
+/.vendor
+config.ru
+Gemfile.lock
+Rakefile
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
