@@ -1,5 +1,5 @@
 import React from 'react';
-import httpService from './service/httpService';
+import httpService from '../service/httpService';
 const BORROW_API = "http://10.0.1.29:3000/user/1/book/";
 const RETURN_API = "http://10.0.1.29:3000/user/1/book/";
 

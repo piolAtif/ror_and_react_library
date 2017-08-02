@@ -6,10 +6,10 @@ import {
 } from 'react-router-dom'
 
 
-import AllBooks from './AllBooks.js'
+import AllBooks from './components/AllBooks.js'
 
-import Search from "./Search";
-import User from "./User";
+import Search from "./components/Search";
+import User from "./components/User";
 
 
 let tabsList = [{id:1,name:'Home', url:'/'},

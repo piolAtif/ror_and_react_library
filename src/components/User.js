@@ -1,6 +1,6 @@
 import React from 'react';
 import Books from './Books';
-import httpService from './service/httpService';
+import httpService from '../service/httpService';
 const BORROWED_BOOKS_URL = "http://10.0.1.29:3000/users/";
 
 class User extends React.Component{
