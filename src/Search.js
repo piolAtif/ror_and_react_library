@@ -6,7 +6,7 @@ const SEARCH_BOOK_API = "http://10.0.1.29:3000/books?search=";
 
 class Search extends React.Component{
     constructor(){
-        super();
+        super()
         this.state={value:'',books:[],message:''};
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -20,7 +20,9 @@ class Search extends React.Component{
 
     fetchBooks(listOfBooks){
         const value = this.state.value;
+
         this.setState({value:value, books:listOfBooks, message:''});
+        this.setState({value:value, books:listOfBooks});
         if(!this.state.books.length>0)
             this.setState({value:value, books:listOfBooks, message:this.state.value+' Not found'})
     }
