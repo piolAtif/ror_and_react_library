@@ -2,7 +2,7 @@ import React from 'react';
 import httpService from '../service/httpService';
 import Books from "./Books";
 
-const SEARCH_BOOK_API = "http://10.0.1.29:3000/books?search=";
+const SEARCH_BOOK_API = "https://peaceful-ravine-21667.herokuapp.com/books?search=";
 
 class Search extends React.Component{
     constructor(){

@@ -1,7 +1,7 @@
 import React from 'react';
 import httpService from '../service/httpService';
 import Books from "./Books";
-const ALL_BOOKS_URL = "http://10.0.1.29:3000/all/books";
+const ALL_BOOKS_URL = "https://peaceful-ravine-21667.herokuapp.com/all/books";
 
 class AllBooks extends React.Component{
 	constructor(){

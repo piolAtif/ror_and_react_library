@@ -1,14 +1,13 @@
 import React from 'react';
 import httpService from '../service/httpService';
-const BORROW_API = "http://10.0.1.29:3000/user/1/book/";
-const RETURN_API = "http://10.0.1.29:3000/user/1/book/";
+const API = "https://peaceful-ravine-21667.herokuapp.com/user/1/book/";
 
 class Book extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
 			id:props.value.id,
-			status: props.value.can_borrowed+"" === '1'? 'borrow':'return'
+			status: props.value.can_borrowed? 'borrow':'return'
 		};
 		this.updateBook = this.updateBook.bind(this);
 	}
@@ -20,11 +19,11 @@ class Book extends React.Component{
 	}
 
 	borrowABook(){
-        new httpService(BORROW_API+this.state.id+"/borrow").getBooks(this.updateBook);
+        new httpService(API+this.state.id+"/borrow").getBooks(this.updateBook);
 	}
 
 	returnABook(){
-        new httpService(RETURN_API+this.state.id+"/return").getBooks(this.updateBook);
+        new httpService(API+this.state.id+"/return").getBooks(this.updateBook);
 	}
 
 	render(){
