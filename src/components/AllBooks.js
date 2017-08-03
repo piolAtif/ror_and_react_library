@@ -14,7 +14,7 @@ class AllBooks extends React.Component{
 		this.setState({allBooks:books});
 	}
 
-    componentWillMount(){
+    componentDidMount(){
 		new httpService(ALL_BOOKS_URL).getBooks(this.getAllBooks);
 	}
 

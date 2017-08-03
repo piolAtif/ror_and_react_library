@@ -14,7 +14,7 @@ class Book extends React.Component{
 
 	updateBook(data){
 		this.setState({id:this.state.id,
-            status:data.can_borrowed+"" === '1'? 'borrow':'return'
+            status:data.can_borrowed? 'borrow':'return'
 		})
 	}
 

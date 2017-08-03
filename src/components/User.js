@@ -20,7 +20,7 @@ class User extends React.Component{
             this.setState({name:this.state.name, id:this.state.id, books:books, message:'No borrowed book'})
     }
 
-    componentWillMount(){
+    componentDidMount(){
         new httpService(BORROWED_BOOKS_URL+this.state.id).getBooks(this.getAllBooks);
     }
 
